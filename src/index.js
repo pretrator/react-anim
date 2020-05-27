@@ -1,8 +1,30 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import Lottie from 'react-lottie'
+import animationData from './5785-checkmark.json'
+ const App=()=>{
+    const [stop,setStop]=useState(false)
+    const defaultOptions = {
+    loop: true,
+    autoplay: true, 
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+ }
+ return (
+  <div>
+  <h1>First time anim</h1>
+  <p>Click on the animation to pause it</p>
+  <Lottie options={defaultOptions}
+        height={400}
+        width={400}
+        isPaused={stop}
+        onClick={()=>setStop(!stop)}
+  />
+</div>
+ )
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +33,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
